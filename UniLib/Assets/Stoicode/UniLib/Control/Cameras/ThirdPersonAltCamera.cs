@@ -40,7 +40,7 @@ namespace Stoicode.UniLib.Control
         public void RotationX(float dir)
         {
             rotX += dir;
-            if (Math.Abs(transform.eulerAngles.y) < 0f)
+            if (Mathf.Abs(transform.eulerAngles.y) < 0f)
                 rotX = 0;
         }
 
@@ -61,17 +61,17 @@ namespace Stoicode.UniLib.Control
 
             if (mouseMode)
             {
-                var mx = Input.GetAxis("Mouse X");
-                var my = Input.GetAxis("Mouse Y");
+                var mouseX = Input.GetAxis("Mouse X");
+                var mouseY = Input.GetAxis("Mouse Y");
 
-                if (mx > 0f)
+                if (mouseX > 0f)
                     RotationX(60f);
-                if (mx < 0f)
+                if (mouseX < 0f)
                     RotationX(-60f);
 
-                if (my > 0f)
+                if (mouseY > 0f)
                     RotationY(-40f);
-                if (my < 0f)
+                if (mouseY < 0f)
                     RotationY(40f);
             }
 

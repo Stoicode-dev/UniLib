@@ -1,0 +1,24 @@
+ ___:__________________________________________________________________:___
+ ||||                                                                  ||||
+ ||||    Stoicode's UniLib								               ||||
+ .|||        												           |||.
+ :|||    UniLib is a library collection of useful classes for          |||:
+  |||    Unity. It has a broad range of features to support            |||
+  |||    easy creation of new projects and enhance existing ones.      |||
+  .||    					                                           ||.
+  :||                                                                  ||:
+   .|    ༼ つ ◕_◕ ༽つ  	                                               |.
+   :|__________________________________________________________________|:
+   :___________________________________________________________________: 
+
+
+
+ Notes v1.0.1
+
+ 	# GUI
+ 		+ Added Canvas element.
+ 		+ Added View element.
+ 		+ Added Popup element.
+
+ 	# Security
+ 		+ Added PBKDF2 hashing.

@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using LiteNetLib;
 using LiteNetLib.Utils;
+using Stoicode.UniLib.Ntp;
 using UnityEngine;
 
 namespace Stoicode.UniLib.Net
 {
     public abstract class NetClient : MonoBehaviour, INetEventListener
     {
-        public NetManager NetManager { get; set; }
-        public NetPacketProcessor NetProcessor { get; set; }
+        public NetManager Manager { get; protected set; }
+        public NetPacketProcessor Processor { get; protected set; }
 
         public NetPeer ServerConnection { get; set; }
 
@@ -20,23 +19,23 @@ namespace Stoicode.UniLib.Net
 
         public void Initialize()
         {
-            NetManager = new NetManager(this);
-            NetProcessor = new NetPacketProcessor();
+            Manager = new NetManager(this);
+            Processor = new NetPacketProcessor();
 
             ConfigureListeners();
         }
 
         public void Connect(string address, int port, string key)
         {
-            NetManager.Start();
-            NetManager.Connect(address, port, key);
+            Manager.Start();
+            Manager.Connect(address, port, key);
 
             Initialized = true;
         }
 
         public void Disconnect()
         {
-            NetManager.Stop();
+            Manager.Stop();
         }
 
         public abstract void OnPeerConnected(NetPeer peer);
@@ -58,7 +57,7 @@ namespace Stoicode.UniLib.Net
         private void Update()
         {
             if (Initialized)
-                NetManager.PollEvents();
+                Manager.PollEvents();
         }
     }
 }

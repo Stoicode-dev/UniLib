@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using LiteNetLib;
 using LiteNetLib.Utils;
@@ -15,8 +13,8 @@ namespace Stoicode.UniLib.Net
 
         public string Key { get; set; }
 
-        public NetManager NetManager { get; set; }
-        public NetPacketProcessor NetProcessor { get; set; }
+        public NetManager Manager { get; set; }
+        public NetPacketProcessor Processor { get; set; }
         public NetDataWriter DataWriter { get; set; }
 
         public bool Initialized { get; set; }
@@ -28,16 +26,16 @@ namespace Stoicode.UniLib.Net
             MaxConnections = maxConnections;
             Key = key;
 
-            NetManager = new NetManager(this)
+            Manager = new NetManager(this)
             {
-                DiscoveryEnabled = true,
-                UpdateTime = 15
+                NatPunchEnabled = true,
+                AutoRecycle = true
             };
 
-            NetProcessor = new NetPacketProcessor();
+            Processor = new NetPacketProcessor();
             DataWriter = new NetDataWriter();
 
-            NetManager.Start(Port);
+            Manager.Start(Port);
 
             ConfigureListeners();
 
@@ -64,7 +62,7 @@ namespace Stoicode.UniLib.Net
         private void Update()
         {
             if (Initialized)
-                NetManager?.PollEvents();
+                Manager?.PollEvents();
         }
     }
 }
