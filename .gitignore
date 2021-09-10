@@ -2,6 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+/[Bb]in/
 /UniLib/[Ll]ibrary/
 /UniLib/[Tt]emp/
 /UniLib/[Oo]bj/
@@ -69,6 +70,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /UniLib/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /UniLib/[Aa]ssets/[Ss]treamingAssets/aa/*
-
-# Build folder
-/[Bb]in/
